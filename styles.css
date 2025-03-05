@@ -1,0 +1,215 @@
+/* Algemeen Styling */
+/* Verbeterde animaties */
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(5px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes popUp {
+    0% { 
+        transform: scale(0) rotate(-5deg);
+        opacity: 0;
+        filter: blur(10px);
+    }
+    50% { 
+        transform: scale(1.2) rotate(3deg);
+        filter: blur(5px);
+    }
+    100% { 
+        transform: scale(1) rotate(0);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes spin {
+    0% { 
+        transform: rotate(0deg) scale(1);
+        border-top-color: #00ff99;
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+        border-top-color: #00ffcc;
+    }
+    100% { 
+        transform: rotate(360deg) scale(1);
+        border-top-color: #00ff99;
+    }
+}
+
+/* Update bestaande elementen met nieuwe transities */
+section {
+    animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.cta-button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+.cta-button:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 153, 0.4);
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    animation: fadeIn 1s ease-in;
+}
+
+.hero h2, .hero p {
+    animation: popUp 0.8s ease-out forwards;
+}
+
+section {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+    animation-delay: 0.5s;
+}
+
+h1, h2 {
+    color: #00ff99;
+    text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99;
+}
+
+a {
+    color: #00ff99;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ff99, 0 0 20px #00ffcc;
+}
+
+/* Header Styling */
+header {
+    background-color: #111;
+    padding: 20px;
+    text-align: center;
+}
+
+header .logo h1 {
+    margin: 0;
+}
+
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    margin: 0 15px;
+    font-size: 1.2em;
+}
+
+/* Hero Sectie */
+.hero {
+    text-align: center;
+    padding: 50px;
+    background-color: #222;
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background-color: #00ff99;
+    color: #000;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #00ffcc;
+    text-shadow: 0 0 10px #00ff99, 0 0 20px #00ffcc;
+}
+
+/* Secties Styling */
+section {
+    padding: 50px;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #111;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+footer a {
+    color: #00ff99;
+    padding: 5px;
+}
+
+footer p {
+    margin-top: 10px;
+}
+/* Laadscherm Styling */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+#loading .spinner {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #00ff99;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+/* Spinner animatie */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loading .spinner {
+    pointer-events: none;
+}
