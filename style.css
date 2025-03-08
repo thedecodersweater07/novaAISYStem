@@ -1,0 +1,57 @@
+@font-face {
+    font-family: "Cyber";
+    src: url("https://fonts.cdnfonts.com/s/18284/Cyberverse.woff");
+  }
+  
+  body {
+    background: black;
+    margin: 0;
+    font-family: "Cyber", monospace;
+  }
+  
+  .loading-screen {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: #00ff00;
+    font-size: 40px;
+    text-shadow: 0 0 10px #00ff00;
+    animation: flicker 1.2s infinite alternate;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .console {
+    width: 800px;
+    height: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 3px solid #00ff00;
+    box-shadow: 0 0 20px #00ff00;
+    overflow-y: scroll;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  #output {
+    color: #00ff00;
+    white-space: pre-wrap;
+  }
+  
+  input {
+    background: black;
+    border: none;
+    outline: none;
+    color: #00ff00;
+    font-size: 20px;
+    width: 100%;
+  }
+  
+  @keyframes flicker {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
+  }
+  
