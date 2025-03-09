@@ -1,215 +1,793 @@
-/* Algemeen Styling */
-/* Verbeterde animaties */
-@keyframes fadeIn {
-    from { 
-        opacity: 0;
-        transform: translateY(20px);
-        filter: blur(5px);
-    }
-    to { 
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-    }
+/* Nova AI - Next Level Styling with Advanced Animations and Effects */
+
+/* Base Imports */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Syncopate:wght@400;700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables for Theming */
+:root {
+  --primary: #00ff99;
+  --primary-glow: #00ffaa;
+  --secondary: #00ccff;
+  --accent: #ff00cc;
+  --dark: #000212;
+  --dark-alt: #05051a;
+  --light: #ffffff;
+  --header-height: 80px;
 }
 
-@keyframes popUp {
-    0% { 
-        transform: scale(0) rotate(-5deg);
-        opacity: 0;
-        filter: blur(10px);
-    }
-    50% { 
-        transform: scale(1.2) rotate(3deg);
-        filter: blur(5px);
-    }
-    100% { 
-        transform: scale(1) rotate(0);
-        opacity: 1;
-        filter: blur(0);
-    }
-}
-
-@keyframes spin {
-    0% { 
-        transform: rotate(0deg) scale(1);
-        border-top-color: #00ff99;
-    }
-    50% {
-        transform: rotate(180deg) scale(1.1);
-        border-top-color: #00ffcc;
-    }
-    100% { 
-        transform: rotate(360deg) scale(1);
-        border-top-color: #00ff99;
-    }
-}
-
-/* Update bestaande elementen met nieuwe transities */
-section {
-    animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.cta-button {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-origin: center;
-}
-
-.cta-button:hover {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 255, 153, 0.4);
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-color: #000;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    animation: fadeIn 1s ease-in;
+  font-family: 'Rajdhani', sans-serif;
+  background: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
+  color: var(--light);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  text-align: center; /* Centreren van alle tekst op de pagina */
 }
 
-.hero h2, .hero p {
-    animation: popUp 0.8s ease-out forwards;
+/* Cyberpunk Grid Background */
+.cyber-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.15;
+  background-size: 50px 50px;
+  background-image:
+    linear-gradient(to right, rgba(0, 255, 153, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 153, 0.1) 1px, transparent 1px);
+  animation: gridPulse 15s infinite alternate;
 }
 
-section {
-    opacity: 0;
-    animation: fadeIn 1s ease-in forwards;
-    animation-delay: 0.5s;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(0, 255, 153, 0.07) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 204, 255, 0.07) 0%, transparent 50%);
+  z-index: -2;
 }
 
-h1, h2 {
-    color: #00ff99;
-    text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99;
+/* Add scanlines effect */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    transparent 50%, 
+    rgba(0, 0, 0, 0.02) 50%, 
+    rgba(0, 0, 0, 0.02) 51%, 
+    transparent 51%);
+  background-size: 100% 4px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.2;
 }
 
-a {
-    color: #00ff99;
-    text-decoration: none;
-    font-weight: bold;
+/* Core Animations */
+@keyframes gridPulse {
+  0% {
+    opacity: 0.07;
+    background-size: 50px 50px;
+    transform: perspective(500px) rotateX(5deg);
+  }
+  100% {
+    opacity: 0.1;
+    background-size: 48px 48px;
+    transform: perspective(500px) rotateX(0deg);
+  }
 }
 
-a:hover {
-    color: #00ffcc;
-    text-shadow: 0 0 10px #00ff99, 0 0 20px #00ffcc;
+@keyframes glitchEffect {
+  0%, 100% {
+    clip-path: inset(80% 0 0 0);
+    transform: translate(-2px, 0);
+  }
+  50% {
+    clip-path: inset(30% 0 60% 0);
+    transform: translate(1px, 0);
+  }
+}
+
+@keyframes neonFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 
+      0 0 5px var(--primary),
+      0 0 10px var(--primary),
+      0 0 20px var(--primary-glow);
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.8;
+  }
+}
+
+@keyframes floatAndGlow {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
+  }
+  50% {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(0, 255, 153, 0.8);
+  }
+}
+
+@keyframes pulseBackground {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes rotateHue {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(360deg); }
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: 'Audiowide', cursive;
+  font-weight: 700;
+  margin: 0.5em auto; /* Auto margins voor horizontaal centreren */
+  position: relative;
+  text-align: center; /* Expliciete center alignering */
+}
+
+h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 50%, var(--primary) 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: pulseBackground 8s linear infinite;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  text-shadow: 0 0 10px var(--primary-glow);
+}
+
+h3 {
+  font-size: 1.8rem;
+  color: var(--secondary);
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  text-align: center; /* Centreren van paragraaftekst */
 }
 
 /* Header Styling */
 header {
-    background-color: #111;
-    padding: 20px;
-    text-align: center;
+  height: var(--header-height);
+  background: rgba(0, 2, 18, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 255, 153, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center; /* Centreren van header-inhoud */
+  align-items: center;
+  padding: 0 5%;
+  flex-direction: column; /* Stapel elementen verticaal */
 }
 
-header .logo h1 {
-    margin: 0;
+header::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--primary) 20%,
+    var(--secondary) 50%,
+    var(--primary) 80%,
+    transparent 100%
+  );
+  opacity: 0.7;
+  animation: pulseBackground 10s linear infinite;
+  background-size: 200% auto;
 }
 
+/* Logo Styling */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centreren van logo */
+  position: relative;
+  width: 100%; /* Volle breedte */
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 2.2em;
+  position: relative;
+}
+
+/* Glitch effect for logo */
+.logo h1::before, .logo h1::after {
+  content: "Nova AI";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: glitchEffect 5s infinite alternate;
+  opacity: 0.7;
+}
+
+.logo h1::before {
+  left: 2px;
+  color: var(--accent);
+  animation-delay: -1s;
+}
+
+.logo h1::after {
+  left: -2px;
+  color: var(--secondary);
+  animation-delay: -2s;
+}
+
+/* Navigation */
 nav {
-    margin-top: 15px;
+  display: flex;
+  gap: 20px;
+  justify-content: center; /* Centreren van navigatie */
+  width: 100%;
 }
 
 nav a {
-    margin: 0 15px;
-    font-size: 1.2em;
+  color: var(--light);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Syncopate', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  position: relative;
+  padding: 10px 0;
+  transition: color 0.3s ease;
 }
 
-/* Hero Sectie */
+nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+nav a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Main Content Styling */
+main {
+  padding: calc(var(--header-height) + 40px) 5% 50px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center; /* Centreren van main content */
+}
+
+/* Hero Section */
 .hero {
-    text-align: center;
-    padding: 50px;
-    background-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centreren van hero content */
+  flex-direction: column; /* Stapel elementen verticaal */
+  min-height: calc(100vh - var(--header-height));
+  gap: 40px;
+  position: relative;
 }
 
-.hero h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+  text-align: center; /* Centreren van hero tekstinhoud */
+}
+
+.hero-image {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Volle breedte */
+}
+
+.hero-image img {
+  max-width: 100%;
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 255, 153, 0.3);
+  box-shadow: 0 0 30px rgba(0, 255, 153, 0.2);
+  animation: floatAndGlow 5s ease-in-out infinite;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
 }
 
 .hero p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
+/* Button Styling */
 .cta-button {
-    background-color: #00ff99;
-    color: #000;
-    padding: 15px 30px;
-    font-size: 1.1em;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: var(--dark);
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Syncopate', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 0 auto; /* Auto margins voor horizontaal centreren */
+}
+
+.cta-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.4s ease;
 }
 
 .cta-button:hover {
-    background-color: #00ffcc;
-    text-shadow: 0 0 10px #00ff99, 0 0 20px #00ffcc;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 255, 153, 0.3);
 }
 
-/* Secties Styling */
-section {
-    padding: 50px;
-    text-align: center;
+.cta-button:hover::before {
+  left: 100%;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+/* Features Section */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin: 80px auto; /* Auto margins voor horizontaal centreren */
+  text-align: center; /* Centreren van feature content */
 }
 
-ul li {
-    font-size: 1.2em;
-    margin-bottom: 10px;
+.feature-card {
+  padding: 30px;
+  background: rgba(5, 5, 26, 0.7);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 255, 153, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centreren van feature card inhoud */
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(0, 255, 153, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 255, 153, 0.15);
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--dark-alt);
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  font-size: 2rem;
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.3);
+}
+
+.feature-card h3 {
+  margin-bottom: 15px;
 }
 
 /* Footer Styling */
 footer {
-    background-color: #111;
-    padding: 20px;
+  background: rgba(0, 2, 18, 0.9);
+  padding: 60px 5% 30px;
+  position: relative;
+  border-top: 1px solid rgba(0, 255, 153, 0.1);
+  text-align: center; /* Centreren van footer content */
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--primary) 50%,
+    transparent 100%
+  );
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+  text-align: center; /* Centreren van footer grid content */
+}
+
+.footer-column h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.footer-links {
+  list-style: none;
+  display: inline-block; /* Voor betere centrering */
+  text-align: center;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: var(--light);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 15px;
+  display: inline-block; /* Voor betere centrering */
+}
+
+.footer-links a::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+}
+
+.footer-links a:hover::before {
+  transform: translateX(5px);
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  justify-content: center; /* Centreren van social links */
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 255, 153, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 255, 153, 0.3);
+}
+
+.social-link:hover {
+  background: var(--primary);
+  transform: translateY(-5px);
+}
+
+.social-link i {
+  color: var(--light);
+  font-size: 1.2rem;
+}
+
+.social-link:hover i {
+  color: var(--dark);
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Animation utility classes */
+.anim-neon { animation: neonFlicker 2s infinite alternate; }
+.anim-float { animation: floatAndGlow 3s ease-in-out infinite; }
+.anim-pulse-bg { 
+  background: linear-gradient(-45deg, var(--primary), var(--secondary));
+  background-size: 400% 400%;
+  animation: pulseBackground 15s ease infinite;
+}
+.anim-hue-rotate { animation: rotateHue 10s linear infinite; }
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;
     text-align: center;
-    color: #fff;
+    gap: 30px;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+  }
 }
 
-footer a {
-    color: #00ff99;
-    padding: 5px;
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 20px 5%;
+  }
+  
+  .logo {
+    margin-bottom: 15px;
+  }
+  
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+  }
 }
 
-footer p {
-    margin-top: 10px;
+@media (max-width: 576px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  .hero h1 { font-size: 2.5rem; }
+  .hero p { font-size: 1.1rem; }
+  .feature-card { padding: 20px; }
 }
-/* Laadscherm Styling */
-#loading {
-    position: fixed;
+/*------- maak chat container all de rest van style is er all alleen chat container nog niet maak dat */
+/*------- Chat Container -------*/
+.chat-container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: rgba(5, 5, 26, 0.7);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 153, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    box-shadow: 0 0 30px rgba(0, 255, 153, 0.15);
+    backdrop-filter: blur(5px);
+    position: relative;
+  }
+  
+  .chat-container::before {
+    content: "";
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--primary) 50%,
+      transparent 100%
+    );
+  }
+  
+  .chat-header {
+    padding: 15px 20px;
+    background: rgba(0, 2, 18, 0.8);
+    border-bottom: 1px solid rgba(0, 255, 153, 0.2);
     display: flex;
-    justify-content: center;
     align-items: center;
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 0.5s ease-out;
-}
-
-#loading .spinner {
-    border: 16px solid #f3f3f3;
-    border-top: 16px solid #00ff99;
+    justify-content: space-between;
+  }
+  
+  .chat-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
+  }
+  
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-}
-
-/* Spinner animatie */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-#loading .spinner {
-    pointer-events: none;
-}
+    box-shadow: 0 0 8px var(--primary-glow);
+    position: relative;
+    animation: neonFlicker 2s infinite alternate;
+  }
+  
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .message {
+    max-width: 80%;
+    padding: 12px 18px;
+    border-radius: 8px;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .user-message {
+    align-self: flex-end;
+    background: linear-gradient(135deg, var(--primary) 0%, rgba(0, 255, 153, 0.7) 100%);
+    color: var(--dark);
+    margin-left: 20%;
+    box-shadow: 0 5px 15px rgba(0, 255, 153, 0.15);
+  }
+  
+  .bot-message {
+    align-self: flex-start;
+    background: rgba(0, 204, 255, 0.1);
+    color: var(--light);
+    border: 1px solid rgba(0, 204, 255, 0.3);
+    margin-right: 20%;
+    box-shadow: 0 5px 15px rgba(0, 204, 255, 0.1);
+  }
+  
+  .message-time {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-top: 5px;
+    text-align: right;
+  }
+  
+  .typing-indicator {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 10px;
+    margin-right: auto;
+    background: rgba(0, 204, 255, 0.05);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 204, 255, 0.2);
+  }
+  
+  .typing-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--secondary);
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+  
+  .typing-dot:nth-child(1) { animation: typingAnimation 1s infinite 0s; }
+  .typing-dot:nth-child(2) { animation: typingAnimation 1s infinite 0.2s; }
+  .typing-dot:nth-child(3) { animation: typingAnimation 1s infinite 0.4s; }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes typingAnimation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  /* Scrollbar styling for chat messages */
+  .chat-messages::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .chat-messages::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  .chat-messages::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    border-radius: 3px;
+  }
+  
+  /* Additional media queries for chat container responsiveness */
+  @media (max-width: 768px) {
+    .chat-container {
+      height: 500px;
+      margin: 20px 10px;
+    }
+    
+    .message {
+      max-width: 90%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .chat-header h3 {
+      font-size: 1.2rem;
+    }
+    
+    .chat-messages {
+      padding: 15px;
+    }
+    
+    .message {
+      padding: 10px 15px;
+    }
+  }

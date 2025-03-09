@@ -7,45 +7,56 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Cyber Grid Achtergrond -->
+    <div class="cyber-grid"></div>
+    <div class="noise-overlay"></div>
+
     <!-- Loading Screen -->
     <div id="loading">
-     <div class="spinner"></div>
+        <div class="spinner anim-spin"></div>
     </div>
 
     <!-- Header -->
     <header>
         <div class="logo">
-            <h1>Nova AI</h1>
+            <h1 class="anim-neon">Nova AI</h1>
         </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="visie.html">Visie</a>
-            <a href="technologie.html">Technologie</a>
-            <a href="ai_demo.html">de ai demo</a>
-            <a href="#contact">Contact</a>
+        <nav role="navigation">
+            <a href="index.html" class="active">Home</a></li>
+            <a href="visie.html">Visie</a></li>
+            <a href="technologie.html">Technologie</a></li>
+            <a href="ai_demo.html">AI Demo</a></li>
+            <a href="#contact">Contact</a></li>
         </nav>
     </header>
 
-    <!-- Hero Sectie -->
+    <!-- Hero Section -->
     <section class="hero">
-        <h2>Nova AI - De Toekomst van AI en Zoeken</h2>
-        <p>Nova AI transformeert de manier waarop we zoeken. Innovatief, privacy-vriendelijk en zelflerend.</p>
-        <a href="visie.html" class="cta-button">Lees Meer</a>
+        <div class="hero-content anim-reveal">
+            <h2 class="anim-neon">De Toekomst van AI en Zoeken</h2>
+            <p>Nova AI transformeert de manier waarop we zoeken. Innovatief, privacy-vriendelijk en zelflerend.</p>
+            <a href="visie.html" class="cta-button anim-float">Lees Meer</a>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="socials">
-            <a href="https://x.com/Nova_AISystem">Twitter</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">YouTube</a>
+            <a href="https://x.com/Nova_AISystem" class="anim-neon" aria-label="Twitter">Twitter</a>
+            <a href="#" class="anim-neon" aria-label="LinkedIn">LinkedIn</a>
+            <a href="#" class="anim-neon" aria-label="YouTube">YouTube</a>
         </div>
         <p>&copy; 2025 Nova AI. Alle rechten voorbehouden.</p>
     </footer>
-    <script src="script.js"></script>
+
+    <!-- Verbeterde JavaScript -->
     <script>
         window.addEventListener('load', function() {
-            document.getElementById('loading').style.display = 'none';
+            const loadingScreen = document.getElementById('loading');
+            if (loadingScreen) {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => loadingScreen.style.display = 'none', 500);
+            }
         });
     </script>
 </body>

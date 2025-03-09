@@ -7,37 +7,57 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Cyber Grid Achtergrond -->
+    <div class="cyber-grid"></div>
+    <div class="noise-overlay"></div>
+
     <!-- Header -->
     <header>
         <div class="logo">
-            <h1>Nova AI</h1>
+            <h1 class="anim-neon">Nova AI</h1>
         </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="visie.html">Visie</a>
-            <a href="technologie.html">Technologie</a>
-            <a href="#contact">Contact</a>
+        <nav role="navigation">
+            
+            <a href="index.html">Home</a></li>
+            <a href="visie.html">Visie</a></li>
+            <a href="technologie.html" class="active">Technologie</a></li>
+            <a href="ai_demo.html">AI Demo</a></li>
+            <a href="#contact">Contact</a></li>
+            
         </nav>
     </header>
 
     <!-- Technologie Sectie -->
-    <section class="technologie">
-        <h2>Onze Technologie</h2>
-        <p>Nova AI combineert de kracht van zelflerende algoritmes, contextueel begrip en privacybewuste processen om een revolutionaire zoekervaring te bieden. Hier zijn enkele van onze technologieën:</p>
-        <ul>
-            <li><strong>Contextueel Zoeken:</strong> We begrijpen de werkelijke bedoelingen van gebruikers om de juiste resultaten te leveren.</li>
-            <li><strong>Privacy als Prioriteit:</strong> Geen tracking, geen dataverkoop - gebruikers houden controle over hun informatie.</li>
-            <li><strong>Zelflerende Algoritmes:</strong> Onze AI past zich voortdurend aan om steeds relevantere zoekresultaten te bieden.</li>
-        </ul>
-        <a href="index.html" class="cta-button">Terug naar Home</a>
+    <section class="content-section tech-section">
+        <div class="content-container anim-reveal">
+            <h2 class="anim-neon">Onze Technologie</h2>
+            <p>Nova AI combineert zelflerende algoritmes, contextueel begrip en privacybewuste processen voor een revolutionaire zoekervaring.</p>
+
+            <div class="tech-features">
+                <article class="tech-feature anim-float">
+                    <h3 class="anim-holographic">Contextueel Zoeken</h3>
+                    <p>We begrijpen de werkelijke bedoelingen van gebruikers om de juiste resultaten te leveren.</p>
+                </article>
+                <article class="tech-feature anim-float">
+                    <h3 class="anim-holographic">Privacy als Prioriteit</h3>
+                    <p>Geen tracking, geen dataverkoop – gebruikers houden controle over hun informatie.</p>
+                </article>
+                <article class="tech-feature anim-float">
+                    <h3 class="anim-holographic">Zelflerende Algoritmes</h3>
+                    <p>Onze AI past zich voortdurend aan om steeds relevantere zoekresultaten te bieden.</p>
+                </article>
+            </div>
+
+            <a href="index.html" class="cta-button">Terug naar Home</a>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="socials">
-            <a href="#">Twitter</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">YouTube</a>
+            <a href="https://x.com/Nova_AISystem" class="anim-neon" aria-label="Twitter">Twitter</a>
+            <a href="#" class="anim-neon" aria-label="LinkedIn">LinkedIn</a>
+            <a href="#" class="anim-neon" aria-label="YouTube">YouTube</a>
         </div>
         <p>&copy; 2025 Nova AI. Alle rechten voorbehouden.</p>
     </footer>

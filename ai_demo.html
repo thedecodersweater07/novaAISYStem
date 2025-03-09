@@ -3,16 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chatbot</title>
-    <link rel="stylesheet" href="style1.css">
+    <title>Nova AI - Interactieve Demo</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="chat-container">
-        <h1>AI Chatbot</h1>
-        <div id="chat-box"></div>
-        <input type="text" id="user-input" placeholder="Typ een bericht...">
-        <button onclick="sendMessage()">Verstuur</button>
+    <!-- Cyber Grid Achtergrond -->
+    <div class="cyber-grid"></div>
+    <div class="noise-overlay"></div>
+
+    <!-- Loading Screen -->
+    <div id="loading">
+        <div class="spinner anim-spin"></div>
     </div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1 class="anim-neon">Nova AI</h1>
+        </div>
+        <nav role="navigation">
+            
+                <a href="index.html">Home</a></li>
+                <a href="visie.html">Visie</a></li>
+                <a href="technologie.html">Technologie</a></li>
+                <a href="ai_demo.html" class="active">AI Demo</a></li>
+                <a href="#contact">Contact</a></li>
+            
+        </nav>
+    </header>
+
+    <!-- Chat Container -->
+    <section class="chat-container">
+        <div class="chat-header">
+            <h2 class="anim-neon">Nova AI Chatbot</h2>
+            <p>Ervaar de toekomst van AI-interactie</p>
+        </div>
+        <div id="chat-box" class="anim-reveal">
+            <div class="message system">Welkom bij de Nova AI demo. Hoe kan ik je vandaag helpen?</div>
+        </div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Stel je vraag aan Nova AI..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()" class="anim-neon">Verstuur</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="socials">
+            <a href="https://x.com/Nova_AISystem" class="anim-neon" aria-label="Twitter">Twitter</a>
+            <a href="#" class="anim-neon" aria-label="LinkedIn">LinkedIn</a>
+            <a href="#" class="anim-neon" aria-label="YouTube">YouTube</a>
+        </div>
+        <p>&copy; 2025 Nova AI. Alle rechten voorbehouden.</p>
+    </footer>
+
+    <!-- Correcte JavaScript-link -->
     <script src="script.js"></script>
 </body>
 </html>
